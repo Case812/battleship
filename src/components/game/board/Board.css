@@ -1,0 +1,16 @@
+.board-div {
+    width: 25rem;
+    height: 25rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.piece-wrapper {
+    border: 1px solid #848482;
+    width: 9.6%;
+    height: 9.6%;
+    background-color:  #DCDCDC;
+}
+.piece-wrapper:nth-child(n+11) {
+    margin-top: -1px;
+}
