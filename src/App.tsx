@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -14,7 +13,7 @@ export default function App() {
   return (
     <>
       <div className="bar-wrapper">
-        <AppBar position="static" sx={{marginTop: !isStarted ? '-4rem' : ''}}>
+        <AppBar position="relative">
           <Toolbar disableGutters>
             {isStarted &&
               <IconButton color='inherit'
