@@ -1,35 +1,43 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import AppBar from '@mui/material/AppBar';
+import IconButton from "@mui/material/IconButton";
+import HomeIcon from '@mui/icons-material/Home';
+import Toolbar from '@mui/material/Toolbar';
+import Game from './components/game/Game';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
+  const [isStarted, setStarted] = useState(false);
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="bar-wrapper">
+        <AppBar position="relative">
+          <Toolbar disableGutters>
+            {isStarted &&
+              <IconButton color='inherit'
+              onClick={() => setStarted(false)}
+              sx={{ marginLeft: '1.25rem' }}
+              >
+                <HomeIcon
+                  fontSize='large'>
+                </HomeIcon>
+              </IconButton>
+            }
+            <Typography
+              sx={{ justifyContent: 'center', flexGrow: 1, ml: isStarted ? '-4.4375rem' : '' }}
+              variant="h5"
+              align="center">
+              Battleship
+            </Typography>
+          </Toolbar>
+        </AppBar>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {isStarted ? <Game></Game> : <div className="content">
+        <Button variant="contained" onClick={() => setStarted(true)}>Start</Button>
+      </div>}
+
     </>
   )
 }
-
-export default App
